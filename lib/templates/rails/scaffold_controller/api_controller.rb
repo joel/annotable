@@ -6,12 +6,30 @@ require_dependency "<%= namespaced_path %>/application_controller"
 class <%= controller_class_name %>Controller < ApplicationController
   before_action :set_<%= singular_table_name %>, only: [:show, :update, :destroy]
 
+  class << self
+    # Define which resources are the authorized to be included
+    # @return [Array]
+    def allowed_includes
+      %i[].freeze
+    end
+
+    # Define which fields can be use as filters
+    # @return [Array]
+    def allowed_filterables
+      %i[created_at updated_at].freeze
+    end
+  end
+
   # GET <%= route_url %>
   # @return [String] Json Response
   def index
     @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
 
-    render jsonapi: <%= "@#{plural_table_name}" %>
+    jsonapi_filter(<%= "@#{plural_table_name}" %>, self.class.allowed_filterables) do |filtered_organizations|
+      jsonapi_paginate(filtered_organizations.result) do |paginated_organizations|
+        render jsonapi: paginated_organizations
+      end
+    end
   end
 
   # GET <%= route_url %>/<UUID>

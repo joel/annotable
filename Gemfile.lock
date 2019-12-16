@@ -47,6 +47,7 @@ GEM
     database_cleaner (1.7.0)
     diff-lcs (1.3)
     erubi (1.9.0)
+    fabrication (2.21.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.7.0)
@@ -110,6 +111,7 @@ PLATFORMS
 DEPENDENCIES
   annotable!
   database_cleaner
+  fabrication
   pg
   pry-byebug
   rspec-rails

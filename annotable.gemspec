@@ -24,12 +24,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activemodel', '~> 6.0.1'
   spec.add_dependency 'activerecord', '~> 6.0.1'
   spec.add_dependency 'activesupport', '~> 6.0.1'
-  spec.add_dependency 'railties', '~> 6.0.1'
   spec.add_dependency 'jsonapi.rb', '~> 1.5'
+  spec.add_dependency 'railties', '~> 6.0.1'
 
   spec.add_development_dependency 'database_cleaner'
   spec.add_development_dependency 'fabrication'
   spec.add_development_dependency 'ffaker'
+  spec.add_development_dependency 'jsonapi-rspec'
   spec.add_development_dependency 'pg'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rspec-rails'
@@ -37,5 +38,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rails_config'
   spec.add_development_dependency 'yardstick'
-  spec.add_development_dependency 'jsonapi-rspec'
 end

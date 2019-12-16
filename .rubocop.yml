@@ -1,0 +1,36 @@
+
+require: rubocop-performance
+
+Performance:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.6
+
+Rails:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false

@@ -13,7 +13,7 @@ end
 
 RSpec.configure do |config|
   %i[routing controller].each do |type|
-    config.include Annotable::RSpec::ControllerRoutes, type: type 
+    config.include Annotable::RSpec::ControllerRoutes, type: type
   end
   config.include Annotable::Engine.routes.url_helpers, type: :request
 end

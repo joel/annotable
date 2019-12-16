@@ -11,7 +11,7 @@ require 'yaml'
 
 desc('Documentation stats and measurements')
 task('qa:docs') do
-  yaml = YAML.load_file(File.expand_path('../.yardstick.yml', __FILE__))
+  yaml = YAML.load_file(File.expand_path('.yardstick.yml', __dir__))
   config = Yardstick::Config.coerce(yaml)
   measure = Yardstick.measure(config)
   measure.puts
@@ -35,13 +35,13 @@ desc('Run CI QA tasks')
 task(qa: ['qa:docs', 'qa:code'])
 
 RSpec::Core::RakeTask.new(spec: :qa) do |t|
-  t.rspec_opts = "-I #{File.expand_path('../spec/', __FILE__)}"
-  t.pattern =  File.expand_path('../spec/**/*_spec.rb', __FILE__)
+  t.rspec_opts = "-I #{File.expand_path('spec', __dir__)}"
+  t.pattern =  File.expand_path('spec/**/*_spec.rb', __dir__)
 end
 
 task(default: :spec)
 
-APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
+APP_RAKEFILE = File.expand_path('spec/dummy/Rakefile', __dir__)
 load 'rails/tasks/engine.rake'
 
 load 'rails/tasks/statistics.rake'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_216_112_504) do
+ActiveRecord::Schema.define(version: 20_191_216_114_941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -20,4 +20,15 @@ ActiveRecord::Schema.define(version: 20_191_216_112_504) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
   end
+
+  create_table 'annotable_users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.uuid 'organization_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['organization_id'], name: 'index_annotable_users_on_organization_id'
+  end
+
+  add_foreign_key 'annotable_users', 'annotable_organizations', column: 'organization_id'
 end

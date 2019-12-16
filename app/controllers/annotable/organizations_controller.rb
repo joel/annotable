@@ -14,7 +14,7 @@ module Annotable
       # Define which fields can be use as filters
       # @return [Array]
       def allowed_filterables
-        %i[created_at updated_at user_id name].freeze
+        %i[created_at updated_at name].freeze
       end
     end
 

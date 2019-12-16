@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec/rails'
 
 module Annotable
@@ -33,4 +35,16 @@ end
 
 RSpec.configure do |config|
   config.include Annotable::RSpecHelpers, type: :request
+end
+
+def user_attributes
+  first_name = FFaker::Name.first_name.delete("'")
+  last_name  = FFaker::Name.last_name.delete("'")
+
+  email = first_name.downcase + '.' + last_name.downcase + FFaker::Internet.email[/@(.*)/]
+
+  {
+    name: first_name + ' ' + last_name,
+    email: email
+  }
 end

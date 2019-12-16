@@ -17,3 +17,20 @@ RSpec.configure do |config|
   end
   config.include Annotable::Engine.routes.url_helpers, type: :request
 end
+
+require 'json'
+
+module Annotable
+  module RSpecHelpers
+    # Parses and returns a deserialized JSON
+    #
+    # @return [Hash]
+    def response_json
+      JSON.parse(response.body)
+    end
+  end
+end
+
+RSpec.configure do |config|
+  config.include Annotable::RSpecHelpers, type: :request
+end

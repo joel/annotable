@@ -23,7 +23,7 @@ desc('Codestyle check and linter')
 RuboCop::RakeTask.new('qa:code') do |task|
   task.fail_on_error = true
   task.patterns = [
-    'lib/**/*.rb',
+    'lib/annotable/**/*.rb',
     'app/**/*.rb',
     'spec/*.rb',
     'spec/support/*.rb',

@@ -13,3 +13,6 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+# See https://github.com/jsonapi-rb/jsonapi-rspec/pull/9
+gem 'jsonapi-rspec', github: 'stas/jsonapi-rspec'

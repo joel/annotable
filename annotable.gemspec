@@ -18,13 +18,14 @@ Gem::Specification.new do |spec|
 
   # spec.add_dependency "rails", "~> 6.0.1"
 
-  # Load only what you need\
+  # Load only what you need
   spec.add_dependency 'actionpack', '~> 6.0.1'
   spec.add_dependency 'activejob', '~> 6.0.1'
   spec.add_dependency 'activemodel', '~> 6.0.1'
   spec.add_dependency 'activerecord', '~> 6.0.1'
   spec.add_dependency 'activesupport', '~> 6.0.1'
   spec.add_dependency 'railties', '~> 6.0.1'
+  spec.add_dependency 'jsonapi.rb', '~> 1.5'
 
   spec.add_development_dependency 'database_cleaner'
   spec.add_development_dependency 'fabrication'
@@ -36,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rails_config'
   spec.add_development_dependency 'yardstick'
+  spec.add_development_dependency 'jsonapi-rspec'
 end

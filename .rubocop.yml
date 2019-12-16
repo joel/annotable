@@ -7,9 +7,6 @@ Performance:
 AllCops:
   TargetRubyVersion: 2.6
 
-Rails:
-  Enabled: true
-
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: single_quotes
@@ -24,7 +21,7 @@ Layout/IndentationConsistency:
   EnforcedStyle: normal
 
 Style/BlockDelimiters:
-  Enabled: true
+  Enabled: false
 
 Layout/FirstMethodArgumentLineBreak:
   Enabled: true
@@ -33,4 +30,10 @@ Style/Documentation:
   Enabled: false
 
 Metrics/BlockLength:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
   Enabled: false

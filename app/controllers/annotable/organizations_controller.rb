@@ -2,14 +2,32 @@ require_dependency 'annotable/application_controller'
 
 module Annotable
   class OrganizationsController < ApplicationController
-    before_action :set_organization, only: %i[show update destroy]
+    before_action :set_organization, only: %i[show update destroy].freeze
+
+    class << self
+      # Define which resources are the authorized to be included
+      # @return [Array]
+      def allowed_includes
+        [:users].freeze
+      end
+
+      # Define which fields can be use as filters
+      # @return [Array]
+      def allowed_filterables
+        %i[created_at updated_at user_id name].freeze
+      end
+    end
 
     # GET /organizations
     # @return [String] Json Response
     def index
       @organizations = Organization.all
 
-      render jsonapi: @organizations
+      jsonapi_filter(@organizations, self.class.allowed_filterables) do |filtered_organizations|
+        jsonapi_paginate(filtered_organizations.result) do |paginated_organizations|
+          render jsonapi: paginated_organizations
+        end
+      end
     end
 
     # GET /organizations/<UUID>

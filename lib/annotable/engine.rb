@@ -4,6 +4,7 @@ module Annotable
     config.generators do |g|
       g.fixture_replacement :fabrication
       g.test_framework      :rspec, fixture: true
+      g.orm :active_record, primary_key_type: :uuid
     end
     config.generators.api_only = true
   end

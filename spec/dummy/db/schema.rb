@@ -10,35 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_216_120_953) do
+ActiveRecord::Schema.define(version: 2019_12_16_120953) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'pgcrypto'
-  enable_extension 'plpgsql'
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
 
-  create_table 'annotable_organizations', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "annotable_organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'annotable_reports', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'name'
-    t.text 'content'
-    t.uuid 'organization_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['organization_id'], name: 'index_annotable_reports_on_organization_id'
+  create_table "annotable_reports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.uuid "organization_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_annotable_reports_on_organization_id"
   end
 
-  create_table 'annotable_users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.uuid 'organization_id'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['organization_id'], name: 'index_annotable_users_on_organization_id'
+  create_table "annotable_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.uuid "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_annotable_users_on_organization_id"
   end
 
-  add_foreign_key 'annotable_reports', 'annotable_organizations', column: 'organization_id'
-  add_foreign_key 'annotable_users', 'annotable_organizations', column: 'organization_id'
+  add_foreign_key "annotable_reports", "annotable_organizations", column: "organization_id"
+  add_foreign_key "annotable_users", "annotable_organizations", column: "organization_id"
 end

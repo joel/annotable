@@ -2,7 +2,7 @@ module Annotable
   class ApplicationController < ActionController::API
     # protect_from_forgery with: :exception
     include JSONAPI::Deserialization
-    include JSONAPI::Errors
+    # include JSONAPI::Errors
     include JSONAPI::Fetching
     include JSONAPI::Filtering
     include JSONAPI::Pagination

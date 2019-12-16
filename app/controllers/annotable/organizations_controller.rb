@@ -21,9 +21,9 @@ module Annotable
     # GET /organizations
     # @return [String] Json Response
     def index
-      @organizations = Organization.all
+      organizations = Organization.all
 
-      jsonapi_filter(@organizations, self.class.allowed_filterables) do |filtered_organizations|
+      jsonapi_filter(organizations, self.class.allowed_filterables) do |filtered_organizations|
         jsonapi_paginate(filtered_organizations.result) do |paginated_organizations|
           render jsonapi: paginated_organizations
         end
@@ -39,12 +39,12 @@ module Annotable
     # POST /organizations
     # @return [String] Json Response
     def create
-      @organization = Organization.new(organization_params)
+      organization = Organization.new(organization_params)
 
-      if @organization.save
-        render jsonapi: @organization, status: :created, location: @organization
+      if organization.save
+        render jsonapi: organization, status: :created, location: organization
       else
-        render jsonapi_errors: @organization.errors, status: :unprocessable_entity
+        render jsonapi_errors: organization.errors, status: :unprocessable_entity
       end
     end
 

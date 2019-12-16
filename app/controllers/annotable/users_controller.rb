@@ -21,9 +21,9 @@ module Annotable
     # GET /users
     # @return [String] Json Response
     def index
-      @users = User.all
+      users = User.all
 
-      jsonapi_filter(@users, self.class.allowed_filterables) do |filtered_organizations|
+      jsonapi_filter(users, self.class.allowed_filterables) do |filtered_organizations|
         jsonapi_paginate(filtered_organizations.result) do |paginated_organizations|
           render jsonapi: paginated_organizations
         end
@@ -39,12 +39,12 @@ module Annotable
     # POST /users
     # @return [String] Json Response
     def create
-      @user = User.new(user_params)
+      user = User.new(user_params)
 
-      if @user.save
-        render jsonapi: @user, status: :created, location: @user
+      if user.save
+        render jsonapi: user, status: :created, location: user
       else
-        render jsonapi_errors: @user.errors, status: :unprocessable_entity
+        render jsonapi_errors: user.errors, status: :unprocessable_entity
       end
     end
 

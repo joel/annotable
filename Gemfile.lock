@@ -104,6 +104,9 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    yard (0.9.20)
+    yardstick (0.9.9)
+      yard (~> 0.8, >= 0.8.7.2)
     zeitwerk (2.2.2)
 
 PLATFORMS
@@ -117,6 +120,7 @@ DEPENDENCIES
   pg
   pry-byebug
   rspec-rails
+  yardstick
 
 BUNDLED WITH
    2.0.2
